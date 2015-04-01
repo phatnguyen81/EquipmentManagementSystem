@@ -39,6 +39,17 @@ namespace EquipmentManagementSystem.Web
 
             bundles.Add(new StyleBundle("~/fonts").Include(
                 "~/fonts/font-awesome/css/font-awesome.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
+                "~/Scripts/angular.js",
+                "~/Scripts/angular-route.min.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/app/account").Include(
+                "~/Scripts/app/accounts/Module.js",
+                "~/Scripts/app/accounts/Services.js",
+                "~/Scripts/app/accounts/ShowAccountsController.js"
+                ));
         }
     }
 }
