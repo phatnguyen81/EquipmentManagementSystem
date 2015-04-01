@@ -42,6 +42,7 @@
     <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="Configuration\SettingExtensions.cs" />
     <Compile Include="Configuration\SettingService.cs" />
+    <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

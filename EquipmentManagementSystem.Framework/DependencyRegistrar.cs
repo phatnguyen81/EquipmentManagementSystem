@@ -12,13 +12,20 @@ using EquipmentManagementSystem.Data;
 using EquipmentManagementSystem.Core.Caching;
 using Autofac.Integration.Mvc;
 using System.Linq;
+using EquipmentManagementSystem.Core.Infrastructure.DependencyManagement;
 
 namespace EquipmentManagementSystem.Framework
 {
-    public class DependencyRegistrar
+    public class DependencyRegistrar : IDependencyRegistrar
     {
+       
         public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
+
+
+            //controllers
+            builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
+
             //data layer
             var dataSettingsManager = new DataSettingsManager();
             var dataProviderSettings = dataSettingsManager.LoadSettings();
@@ -51,6 +58,10 @@ namespace EquipmentManagementSystem.Framework
             builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("ems_cache_static").SingleInstance();
             builder.RegisterType<PerRequestCacheManager>().As<ICacheManager>().Named<ICacheManager>("ems_cache_per_request").InstancePerLifetimeScope();
 
+        }
+        public int Order
+        {
+            get { return 0; }
         }
     }
     public class SettingsSource : IRegistrationSource
