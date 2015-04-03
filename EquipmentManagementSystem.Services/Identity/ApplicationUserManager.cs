@@ -25,7 +25,7 @@ namespace EquipmentManagementSystem.Services.Identity
         {
             var dataSettingsManager = new DataSettingsManager();
             var dataProviderSettings = dataSettingsManager.LoadSettings();
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<EmsIdentityDbContext>(dataProviderSettings.DataConnectionString)));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<EmsIdentityDbContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {

@@ -44,11 +44,12 @@ namespace EquipmentManagementSystem.Web
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-route.min.js"
                 ));
-
+            bundles.Add(new ScriptBundle("~/app/main").Include(
+                "~/Scripts/app/ApplicationModule.js",
+                "~/Scripts/app/accounts/Services.js"
+            ));
             bundles.Add(new ScriptBundle("~/app/account").Include(
-                "~/Scripts/app/accounts/Module.js",
-                "~/Scripts/app/accounts/Services.js",
-                "~/Scripts/app/accounts/ShowAccountsController.js"
+                "~/Scripts/app/accounts/ListAccountsController.js"
                 ));
         }
     }

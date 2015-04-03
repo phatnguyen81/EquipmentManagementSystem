@@ -11,8 +11,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/modernizr")
 
-    @Scripts.Render("~/bundles/angularjs")
-    @Scripts.Render("~/app/account")
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,7 +21,8 @@
 
 
 </head>
-<body>
+<body data-ng-app="mainModule">
+    <base href="@(string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~")))" />
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -39,25 +39,17 @@
             @Html.Partial("_Menu")
         </nav>
         <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        @RenderBody()
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
+        <div id="page-wrapper" data-ng-view>
+            @RenderBody()
         </div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
-
     <!-- jQuery -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     @*@Scripts.Render("~/bundles/jquery")*@
+
+    <script data-main="@Url.Content("~/Scripts/main.js")" src="@Url.Content("~/Scripts/require.js")"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/plugins")
     @RenderSection("scripts", required: false)
