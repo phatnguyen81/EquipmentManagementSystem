@@ -7,18 +7,23 @@ require.config({
     paths: {
         'application-configuration': 'Scripts/application-configuration',
         'angular': 'Scripts/angular',
-        'angular-route': 'Scripts/angular-route',
+        'angular-route': 'Scripts/angular-route.min',
         'angularAMD': 'Scripts/angularAMD',
         'blockUI': 'Scripts/angular-block-ui',
         'ngload': 'Scripts/ngload',
-        'accountsController': '../Views/Shared/AccountsController'
+        'ui-bootstrap': 'Scripts/angular-ui/ui-bootstrap-tpls.min',
+        'angular-sanitize': 'Scripts/angular-sanitize.min',
+        'accountsController': 'Views/Shared/AccountsController'
     },
 
     // Add angular modules that does not support AMD out of the box, put it in a shim
     shim: {
         'angularAMD': ['angular'],
         'angular-route': ['angular'],
-        'blockUI': ['angular']
+        'blockUI': ['angular'],
+        'angular-sanitize': ['angular'],
+        'ui-bootstrap': ['angular']
+
     },
 
     // kick start application
