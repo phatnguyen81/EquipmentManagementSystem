@@ -13,6 +13,12 @@ require.config({
         'ngload': 'Scripts/ngload',
         'ui-bootstrap': 'Scripts/angular-ui/ui-bootstrap-tpls.min',
         'angular-sanitize': 'Scripts/angular-sanitize.min',
+        'nggrid': 'Scripts/ng-grid.min',
+
+        //services
+        'ajaxService': 'services/ajaxServices',
+        'accountServices': 'services/accountServices',
+
         'accountsController': 'Views/Shared/AccountsController'
     },
 

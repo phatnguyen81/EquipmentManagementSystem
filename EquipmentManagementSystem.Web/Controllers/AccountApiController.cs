@@ -19,6 +19,7 @@ using System.Collections.Generic;
 
 namespace EquipmentManagementSystem.Web.Controllers
 {
+    [RoutePrefix("api/accounts")]
     public class AccountApiController : ApiController
     {
         private ApplicationSignInManager _signInManager;
@@ -57,9 +58,9 @@ namespace EquipmentManagementSystem.Web.Controllers
         }
 
         [ResponseType(typeof(ApplicationUser))]
-        public List<ApplicationUser> GetAccounts()
+        public List<ApplicationUser> GetUsers(string keyword, int pageIndex = 0, int pageSize = int.MaxValue)
         {
-            return _accountService.GetAccounts(null).ToList();
+            return _accountService.GetUsers(null, pageIndex, pageSize).ToList();
         }
     }
 }

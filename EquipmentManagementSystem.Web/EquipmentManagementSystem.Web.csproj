@@ -264,6 +264,8 @@
     <Content Include="Content\DataTables\images\xls_hover.png" />
     <Content Include="Content\DataTables\swf\copy_csv_xls.swf" />
     <Content Include="Content\DataTables\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Content\ng-grid.css" />
+    <Content Include="Content\ng-grid.min.css" />
     <Content Include="Content\plugins\dataTables.bootstrap.css" />
     <Content Include="Content\plugins\metisMenu\metisMenu.css" />
     <Content Include="Content\plugins\metisMenu\metisMenu.min.css" />
@@ -1140,6 +1142,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ng-grid.js" />
+    <Content Include="Scripts\ng-grid.min.js" />
     <Content Include="Scripts\ngload.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\plugins\dataTables\dataTables.bootstrap.js" />
@@ -1162,10 +1166,12 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Static\Account\List.html" />
-    <Content Include="Static\Account\ListController.js" />
-    <Content Include="Static\Main\Default.html" />
-    <Content Include="Static\Main\DefaultController.js" />
+    <Content Include="Services\AccountServices.js" />
+    <Content Include="Services\AjaxServices.js" />
+    <Content Include="Templates\Account\List.html" />
+    <Content Include="Templates\Account\ListController.js" />
+    <Content Include="Templates\Main\Default.html" />
+    <Content Include="Templates\Main\DefaultController.js" />
     <Content Include="Views\Shared\AccountsController.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

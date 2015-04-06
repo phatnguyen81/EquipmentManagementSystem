@@ -17,7 +17,7 @@ namespace EquipmentManagementSystem.Services.Identity
         {
             _emsIdentityDbContext = emsIdentityDbContext;
         }
-        public IList<ApplicationUser> GetAccounts(string keyword, int pageIndex = 0, int pageSize = int.MaxValue)
+        public IList<ApplicationUser> GetUsers(string keyword, int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _emsIdentityDbContext.Users.AsQueryable();
             if (!string.IsNullOrWhiteSpace(keyword))

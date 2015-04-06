@@ -1,7 +1,7 @@
 ﻿"use strict";
 
-define(['angularAMD', 'angular-route', 'ui-bootstrap', 'angular-sanitize', 'blockUI', ], function (angularAMD) {
-    var app = angular.module("mainModule", ['ngRoute', 'blockUI', 'ngSanitize', 'ui.bootstrap']);
+define(['angularAMD', 'angular-route', 'ui-bootstrap', 'angular-sanitize', 'blockUI','nggrid' ], function (angularAMD) {
+    var app = angular.module("mainModule", ['ngRoute', 'blockUI', 'ngSanitize', 'ui.bootstrap', 'ngGrid']);
 
     app.filter("leadingZeroes", function () {
         return function (data) {
@@ -33,14 +33,14 @@ define(['angularAMD', 'angular-route', 'ui-bootstrap', 'angular-sanitize', 'bloc
 
            .when("/", angularAMD.route({
 
-               templateUrl: function (rp) { return 'Static/Main/default.html'; },
-               controllerUrl: "Static/Main/defaultController"
+               templateUrl: function (rp) { return 'Templates/Main/default.html'; },
+               controllerUrl: "Templates/Main/defaultController"
 
            }))
 
             .when("/:section/:tree", angularAMD.route({
 
-                templateUrl: function (rp) { return 'static/' + rp.section + '/' + rp.tree + '.html'; },
+                templateUrl: function (rp) { return 'templates/' + rp.section + '/' + rp.tree + '.html'; },
 
                 resolve: {
 
@@ -51,7 +51,7 @@ define(['angularAMD', 'angular-route', 'ui-bootstrap', 'angular-sanitize', 'bloc
                         var parentPath = parsePath[1];
                         var controllerName = parsePath[2];
 
-                        var loadController = "Static/" + parentPath + "/" + controllerName + "Controller";
+                        var loadController = "Templates/" + parentPath + "/" + controllerName + "Controller";
 
                         var deferred = $q.defer();
                         require([loadController], function () {
@@ -67,7 +67,7 @@ define(['angularAMD', 'angular-route', 'ui-bootstrap', 'angular-sanitize', 'bloc
 
             .when("/:section/:tree/:id", angularAMD.route({
 
-                templateUrl: function (rp) { return 'static/' + rp.section + '/' + rp.tree + '.html'; },
+                templateUrl: function (rp) { return 'templates/' + rp.section + '/' + rp.tree + '.html'; },
 
                 resolve: {
 
@@ -78,7 +78,7 @@ define(['angularAMD', 'angular-route', 'ui-bootstrap', 'angular-sanitize', 'bloc
                         var parentPath = parsePath[1];
                         var controllerName = parsePath[2];
 
-                        var loadController = "Static/" + parentPath + "/" + controllerName + "Controller";
+                        var loadController = "Templates/" + parentPath + "/" + controllerName + "Controller";
 
                         var deferred = $q.defer();
                         require([loadController], function () {
