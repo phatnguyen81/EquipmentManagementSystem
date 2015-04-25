@@ -55,19 +55,43 @@
     <Compile Include="EfStartUpTask.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
-    <Compile Include="Mapping\Account\AccountMap.cs" />
-    <Compile Include="Mapping\Account\AccountRoleMap.cs" />
-    <Compile Include="Mapping\Catalog\CategoryMap.cs" />
-    <Compile Include="Mapping\Catalog\ProductDepreciationMap.cs" />
-    <Compile Include="Mapping\Catalog\ProductMap.cs" />
-    <Compile Include="Mapping\Configuration\SettingMap.cs" />
     <Compile Include="EmsObjectContext.cs" />
-    <Compile Include="Mapping\Transactions\TransactionDetailMap.cs" />
-    <Compile Include="Mapping\Transactions\TransactionTypeMap.cs" />
-    <Compile Include="Mapping\Transactions\TransactionMap.cs" />
-    <Compile Include="Mapping\Warehouses\WarehouseMap.cs" />
-    <Compile Include="Mapping\Warehouses\WarehouseProfileMap.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Mapping\Account\AccountMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Account\AccountRoleMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Catalog\CategoryMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Catalog\ProductDepreciationMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Catalog\ProductMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Configuration\SettingMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Transactions\TransactionDetailMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Transactions\TransactionMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Transactions\TransactionTypeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Warehouses\WarehouseMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\Warehouses\WarehouseProfileMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerDataProvider.cs" />
   </ItemGroup>

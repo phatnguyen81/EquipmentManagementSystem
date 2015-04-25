@@ -1,0 +1,23 @@
+@model DateTime
+@{
+    //we do not bundle this script file (does not work for some reasons in bundle)
+    
+    Html.AddScriptParts("~/Scripts/bootstrap-datepicker.min.js", true);
+    Html.AddScriptParts("~/Scripts/locales/bootstrap-datepicker.vi.min.js", true);
+    Html.AddCssFileParts("~/Content/bootstrap-datepicker.min.css");
+
+}
+
+
+<div id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-group" class="input-group date">
+    <input class="form-control" id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)" name="@ViewData.TemplateInfo.GetFullHtmlFieldName(string.Empty)" value="@((Model > DateTime.MinValue ? Model : DateTime.Today).ToShortDateString())" />
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+</div>
+    <script>
+        $(document).ready(function () {
+            $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-group").datepicker({
+                language: 'vi',
+                enableOnReadonly: false
+            });
+        });
+    </script>

@@ -118,27 +118,57 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\TransactionController.cs" />
-    <Compile Include="Extensions\MappingExtensions.cs" />
+    <Compile Include="Controllers\CategoryController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ProductController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\TransactionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\MappingExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\AutoMapperStartupTask.cs" />
-    <Compile Include="Models\Account\LoginModel.cs" />
-    <Compile Include="Models\Catalog\ProductListModel.cs" />
-    <Compile Include="Models\Catalog\CategoryListModel.cs" />
-    <Compile Include="Models\Catalog\ProductModel.cs" />
-    <Compile Include="Models\Catalog\CategoryModel.cs" />
-    <Compile Include="Models\Transactions\ImportModel.cs" />
-    <Compile Include="Models\Transactions\TransactionDetailModel.cs" />
+    <Compile Include="Infrastructure\AutoMapperStartupTask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Account\LoginModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Catalog\CategoryListModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Catalog\CategoryModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Catalog\ProductListModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Catalog\ProductModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Transactions\ImportModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Transactions\TransactionDetailModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,15 +182,19 @@
     <Content Include="Content\bootstrap-datepicker3.standalone.css" />
     <Content Include="Content\bootstrap-datepicker3.standalone.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mixins.less" />
     <Content Include="Content\plugins\dataTables.bootstrap.css" />
     <Content Include="Content\plugins\metisMenu\metisMenu.css" />
     <Content Include="Content\plugins\metisMenu\metisMenu.min.css" />
     <Content Include="Content\plugins\morris.css" />
     <Content Include="Content\plugins\social-buttons.css" />
     <Content Include="Content\plugins\timeline.css" />
+    <Content Include="Content\Roxy_Fileman\conf.json" />
     <Content Include="Content\Roxy_Fileman\css\images\animated-overlay.gif" />
     <Content Include="Content\Roxy_Fileman\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\Roxy_Fileman\css\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -412,6 +446,7 @@
     <Content Include="Content\Roxy_Fileman\js\custom.js" />
     <Content Include="Content\Roxy_Fileman\js\directory.js" />
     <Content Include="Content\Roxy_Fileman\js\file.js" />
+    <Content Include="Content\Roxy_Fileman\js\fileman-modified.zip" />
     <Content Include="Content\Roxy_Fileman\js\filetypes.js" />
     <Content Include="Content\Roxy_Fileman\js\jquery-1.10.2.min.js" />
     <Content Include="Content\Roxy_Fileman\js\jquery-dateFormat.min.js" />
@@ -421,8 +456,13 @@
     <Content Include="Content\Roxy_Fileman\js\mini-main.js" />
     <Content Include="Content\Roxy_Fileman\js\tiny_mce_popup.js" />
     <Content Include="Content\Roxy_Fileman\js\utils.js" />
+    <Content Include="Content\Roxy_Fileman\lang\bg.json" />
+    <Content Include="Content\Roxy_Fileman\lang\de.json" />
+    <Content Include="Content\Roxy_Fileman\lang\en.json" />
+    <Content Include="Content\Roxy_Fileman\lang\fr.json" />
     <Content Include="Content\Roxy_Fileman\LICENSE.txt" />
     <Content Include="Content\sb-admin-2.css" />
+    <Content Include="Content\tinymce\langs\readme.md" />
     <Content Include="Content\tinymce\license.txt" />
     <Content Include="Content\tinymce\plugins\advlist\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\anchor\plugin.min.js" />
@@ -476,6 +516,7 @@
     <Content Include="Content\tinymce\plugins\jbimages\langs\ru_dlg.js" />
     <Content Include="Content\tinymce\plugins\jbimages\plugin.js" />
     <Content Include="Content\tinymce\plugins\jbimages\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\readme" />
     <Content Include="Content\tinymce\plugins\layer\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\legacyoutput\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\link\plugin.min.js" />
@@ -501,8 +542,15 @@
     <Content Include="Content\tinymce\plugins\wordcount\plugin.min.js" />
     <Content Include="Content\tinymce\skins\lightgray\content.inline.min.css" />
     <Content Include="Content\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Content\tinymce\skins\lightgray\img\anchor.gif" />
     <Content Include="Content\tinymce\skins\lightgray\img\loader.gif" />
     <Content Include="Content\tinymce\skins\lightgray\img\object.gif" />
@@ -511,13 +559,12 @@
     <Content Include="Content\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="Content\tinymce\themes\modern\theme.min.js" />
     <Content Include="Content\tinymce\tinymce.min.js" />
+    <Content Include="Content\variables.less" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
-    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\font-awesome\fonts\FontAwesome.otf" />
@@ -547,30 +594,12 @@
     <Content Include="fonts\font-awesome\scss\_spinning.scss" />
     <Content Include="fonts\font-awesome\scss\_stacked.scss" />
     <Content Include="fonts\font-awesome\scss\_variables.scss" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\mixins.less" />
-    <Content Include="Content\variables.less" />
-    <Content Include="Content\Roxy_Fileman\conf.json" />
-    <Content Include="Content\Roxy_Fileman\js\fileman-modified.zip" />
-    <Content Include="Content\Roxy_Fileman\lang\bg.json" />
-    <Content Include="Content\Roxy_Fileman\lang\de.json" />
-    <Content Include="Content\Roxy_Fileman\lang\en.json" />
-    <Content Include="Content\Roxy_Fileman\lang\fr.json" />
-    <Content Include="Content\tinymce\langs\readme.md" />
-    <Content Include="Content\tinymce\plugins\jbimages\readme" />
-    <Content Include="Content\tinymce\skins\lightgray\fonts\readme.md" />
-    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
-    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
-    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
-    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.eot" />
-    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.ttf" />
-    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.woff" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
@@ -579,7 +608,7 @@
     <Content Include="Scripts\customValidate.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -666,14 +695,28 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
-    <Content Include="Scripts\_references.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Category\Create.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Category\Edit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Category\List.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Category\_CreateOrUpdate.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Create.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Product\Edit.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Product\List.cshtml">
@@ -682,31 +725,18 @@
     <Content Include="Views\Product\_CreateOrUpdate.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Shared\_Menu.cshtml" />
-    <Content Include="Views\Shared\_NavbarHeader.cshtml" />
-    <Content Include="Views\Shared\_Login.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Category\List.cshtml" />
+    <Content Include="Views\Shared\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Address.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\Shared\EditorTemplates\DateNullable.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\DateTimeDisable.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\Shared\EditorTemplates\DateTimeNullable.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DecimalNullable.cshtml" />
@@ -715,18 +745,34 @@
     <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Int32Nullable.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Picture.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\RichEditor.cshtml" />
-    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RichEditor.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Notifications.cshtml" />
-    <Content Include="Views\Shared\Delete.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Transaction\Import.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DateTimeDisable.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_NavbarHeader.cshtml" />
+    <Content Include="Views\Transaction\Import.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EquipmentManagementSystem.Core\EquipmentManagementSystem.Core.csproj">

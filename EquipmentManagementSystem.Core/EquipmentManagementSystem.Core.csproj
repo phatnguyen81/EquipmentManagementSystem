@@ -98,20 +98,48 @@
     <Compile Include="Data\DataSettingsManager.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Domain\Accounts\Account.cs" />
-    <Compile Include="Domain\Accounts\AccountRole.cs" />
-    <Compile Include="Domain\Accounts\AccountSettings.cs" />
-    <Compile Include="Domain\Accounts\AccountLoginResults.cs" />
-    <Compile Include="Domain\Catalog\Category.cs" />
-    <Compile Include="Domain\Catalog\Product.cs" />
-    <Compile Include="Domain\Catalog\ProductDepreciation.cs" />
-    <Compile Include="Domain\Common\CommonSettings.cs" />
-    <Compile Include="Domain\Configuration\Setting.cs" />
-    <Compile Include="Domain\Transactions\Transaction.cs" />
-    <Compile Include="Domain\Transactions\TransactionDetail.cs" />
-    <Compile Include="Domain\Transactions\TransactionType.cs" />
-    <Compile Include="Domain\Warehouses\WarehouseProfile.cs" />
-    <Compile Include="Domain\Warehouses\Warehouse.cs" />
+    <Compile Include="Domain\Accounts\Account.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Accounts\AccountLoginResults.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Accounts\AccountRole.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Accounts\AccountSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Catalog\Category.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Catalog\Product.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Catalog\ProductDepreciation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Common\CommonSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Configuration\Setting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Transactions\Transaction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Transactions\TransactionDetail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Transactions\TransactionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Warehouses\Warehouse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Warehouses\WarehouseProfile.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\DependencyManagement\ContainerManager.cs" />
     <Compile Include="Infrastructure\DependencyManagement\IDependencyRegistrar.cs" />

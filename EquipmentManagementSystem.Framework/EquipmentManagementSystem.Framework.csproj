@@ -97,38 +97,96 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\FormValueRequiredAttribute.cs" />
-    <Compile Include="Controllers\ParameterBasedOnFormNameAndValueAttribute.cs" />
-    <Compile Include="Controllers\ParameterBasedOnFormNameAttribute.cs" />
-    <Compile Include="Datatables\DataSourceRequest.cs" />
-    <Compile Include="Datatables\DataSourceResult.cs" />
+    <Compile Include="Controllers\BaseController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\FormValueRequiredAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ParameterBasedOnFormNameAndValueAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ParameterBasedOnFormNameAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Datatables\DataSourceRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Datatables\DataSourceResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DependencyRegistrar.cs" />
     <Compile Include="HtmlExtensions.cs" />
-    <Compile Include="Mvc\BaseEmsModel.cs" />
-    <Compile Include="Mvc\CommaSeparatedModelBinder.cs" />
-    <Compile Include="Mvc\DeleteConfirmationModel.cs" />
-    <Compile Include="Mvc\DependencyRegistrarExtensions.cs" />
-    <Compile Include="Mvc\IModelAttribute.cs" />
-    <Compile Include="Mvc\EmsMetadataProvider.cs" />
-    <Compile Include="Mvc\EmsModelBinder.cs" />
-    <Compile Include="Mvc\NullJsonResult.cs" />
-    <Compile Include="Mvc\Routes\GuidConstraint.cs" />
-    <Compile Include="Mvc\Routes\IRouteProvider.cs" />
-    <Compile Include="Mvc\Routes\IRoutePublisher.cs" />
-    <Compile Include="Mvc\Routes\RoutePublisher.cs" />
-    <Compile Include="Mvc\XmlDownloadResult.cs" />
+    <Compile Include="Mvc\BaseEmsModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\CommaSeparatedModelBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\DeleteConfirmationModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\DependencyRegistrarExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\EmsMetadataProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\EmsModelBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\IModelAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\NullJsonResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\Routes\GuidConstraint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\Routes\IRouteProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\Routes\IRoutePublisher.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\Routes\RoutePublisher.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mvc\XmlDownloadResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\AsIsBundleOrderer.cs" />
-    <Compile Include="UI\DataListExtensions.cs" />
-    <Compile Include="UI\IPageHeadBuilder.cs" />
-    <Compile Include="UI\LayoutExtensions.cs" />
-    <Compile Include="UI\NotifyType.cs" />
-    <Compile Include="UI\PageHeadBuilder.cs" />
-    <Compile Include="UI\Paging\BasePageableModel.cs" />
-    <Compile Include="UI\Paging\IPageableModel.cs" />
-    <Compile Include="UI\Paging\Pager.cs" />
-    <Compile Include="UI\ResourceLocation.cs" />
+    <Compile Include="UI\AsIsBundleOrderer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\DataListExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IPageHeadBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\LayoutExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\NotifyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\PageHeadBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Paging\BasePageableModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Paging\IPageableModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Paging\Pager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\ResourceLocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="WebWorkContext.cs" />
   </ItemGroup>
   <ItemGroup>

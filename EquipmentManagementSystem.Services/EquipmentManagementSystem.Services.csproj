@@ -49,29 +49,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts\AccountRegistrationService.cs" />
-    <Compile Include="Accounts\AccountRegistrationRequest.cs" />
-    <Compile Include="Accounts\AccountRegistrationResult.cs" />
-    <Compile Include="Accounts\IAccountRegistrationService.cs" />
-    <Compile Include="Authentication\FormsAuthenticationService.cs" />
-    <Compile Include="Authentication\IAuthenticationService.cs" />
-    <Compile Include="Catalog\ProductService.cs" />
-    <Compile Include="Catalog\CategoryService.cs" />
-    <Compile Include="Catalog\IProductService.cs" />
-    <Compile Include="Catalog\ICategoryService.cs" />
-    <Compile Include="Configuration\ISettingService.cs" />
-    <Compile Include="Configuration\SettingExtensions.cs" />
-    <Compile Include="Configuration\SettingService.cs" />
-    <Compile Include="Accounts\ChangePasswordRequest.cs" />
-    <Compile Include="Accounts\AccountExtensions.cs" />
-    <Compile Include="Accounts\AccountService.cs" />
-    <Compile Include="Accounts\IAccountService.cs" />
-    <Compile Include="Accounts\PasswordChangeResult.cs" />
+    <Compile Include="Accounts\AccountExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountRegistrationRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountRegistrationResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountRegistrationService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Accounts\ChangePasswordRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Accounts\IAccountRegistrationService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Accounts\IAccountService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Accounts\PasswordChangeResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Authentication\FormsAuthenticationService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Authentication\IAuthenticationService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Catalog\CategoryService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Catalog\ICategoryService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Catalog\IProductService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Catalog\ProductService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ISettingService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\SettingExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\SettingService.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\EncryptionService.cs" />
-    <Compile Include="Security\IEncryptionService.cs" />
-    <Compile Include="Warehouses\IWarehouseProfileService.cs" />
-    <Compile Include="Warehouses\WarehouseProfileService.cs" />
+    <Compile Include="Security\EncryptionService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Security\IEncryptionService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Warehouses\IWarehouseProfileService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Warehouses\WarehouseProfileService.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EquipmentManagementSystem.Core\EquipmentManagementSystem.Core.csproj">

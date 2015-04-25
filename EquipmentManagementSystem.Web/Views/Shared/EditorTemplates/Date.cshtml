@@ -1,0 +1,16 @@
+﻿@model DateTime
+@{
+    //we do not bundle this script file (does not work for some reasons in bundle)
+    Html.AddScriptParts("~/Scripts/bootstrap-datepicker.min.js", true);
+    Html.AddCssFileParts("~/Content/bootstrap-datepicker.min.css");
+
+}
+
+
+
+<input class="form-control" id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)" name="@ViewData.TemplateInfo.GetFullHtmlFieldName(string.Empty)" value="@((Model > DateTime.MinValue ? Model : DateTime.Today).ToShortDateString())" />
+<script>
+    $(document).ready(function () {
+        $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)").datepicker({ locale: 'vi' });
+    });
+</script>
