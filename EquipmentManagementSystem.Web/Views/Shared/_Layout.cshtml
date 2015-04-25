@@ -1,28 +1,56 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <!-- Bootstrap Core CSS -->
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/plugins")
-    @Styles.Render("~/fonts")
-    @Scripts.Render("~/bundles/modernizr")
-    <link href="@Url.Content("~/Content/angular-block-ui.css")" rel="stylesheet" />
-    <script data-main="@Url.Content("~/Scripts/main.js")" src="@Url.Content("~/Scripts/require.js")"></script>
+﻿@using EquipmentManagementSystem.Framework.UI;
+<!DOCTYPE html>
+<html lang="en">
+@{
+    //CSS resources
 
+    Html.AppendCssFileParts("~/Content/bootstrap.min.css");
+    Html.AppendCssFileParts("~/Content/sb-admin-2.css");
+    Html.AppendCssFileParts("~/Content/plugins/metisMenu/metisMenu.min.css");
+    Html.AppendCssFileParts("~/Content/plugins/morris.css");
+    Html.AppendCssFileParts("~/Content/plugins/timeline.css");
+    Html.AppendCssFileParts("~/fonts/font-awesome/css/font-awesome.min.css");
+
+    Html.AppendScriptParts("~/Scripts/customValidate.js");
+    Html.AppendScriptParts("~/Scripts/jquery.validate.unobtrusive.min.js");
+    Html.AppendScriptParts("~/Scripts/jquery.validate.min.js");
+    Html.AppendScriptParts("~/Scripts/bootstrap.js");
+    Html.AppendScriptParts("~/Scripts/respond.js");
+    Html.AppendScriptParts("~/Scripts/sb-admin-2.js");
+    Html.AppendScriptParts("~/Scripts/plugins/metisMenu/metisMenu.min.js");
+    
+
+
+
+
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <!-- Bootstrap Core CSS -->
+    @Html.EmsCssFiles(this.Url, ResourceLocation.Head)
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+    <script src="http://cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+
+    
+    @Html.EmsScripts(this.Url, ResourceLocation.Head)
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    @*<base href="@(string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~")))" />*@
 </head>
-<body ng-controller="indexController" ng-init="initializeController()">
-
+<body>
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -39,20 +67,30 @@
             @Html.Partial("_Menu")
         </nav>
         <!-- Page Content -->
-        <div id="page-wrapper" data-ng-view>
-            @RenderBody()
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>
+                            @Html.Partial("Notifications")
+                        </p>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                
+                @RenderBody()
+            </div>
+            <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    @*<script src="@Url.Content("~/Scripts/angular.js")"></script>
-        <script src="@Url.Content("~/Scripts/angular-route.js")"></script>*@
-
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/plugins")
-
     @RenderSection("scripts", required: false)
+
+    @Html.EmsCssFiles(this.Url, ResourceLocation.Foot)
+    @Html.EmsScripts(this.Url, ResourceLocation.Foot)
+    
+    <link rel="stylesheet" href="http://cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.css" />
 </body>
 </html>

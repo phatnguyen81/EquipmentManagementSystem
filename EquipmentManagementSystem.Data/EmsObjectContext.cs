@@ -17,7 +17,10 @@ namespace EquipmentManagementSystem.Data
     public class EmsObjectContext : DbContext, IDbContext
     {
         #region Ctor
-
+        public EmsObjectContext()
+            : base("Data Source=.\\sqlexpress2k8;Initial Catalog=Ems;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=Admin@123")
+        {
+        }
         public EmsObjectContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {

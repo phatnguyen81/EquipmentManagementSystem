@@ -1,0 +1,171 @@
+﻿@model ImportModel
+@{
+    Html.AddScriptParts("~/Scripts/knockout-3.3.0.js");
+    ViewBag.Title = "Nhập hàng";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title (@Html.ActionLink("về danh sách", "List"))</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Thổng tin giao dịch
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Ngày nhập kho</label>
+                                @Html.TextBoxFor(model => model.ImportDate, new { @class = "form-control", @readonly = "readonly"})
+                                @Html.ValidationMessageFor(model => model.ImportDate)
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Kho nhận</label>
+                                @Html.DropDownListFor(model => model.WarehouseProfileId, Model.AvailableWarehouseProfiles, "--- Chọn ---", new {@class = "form-control"})
+                                @Html.ValidationMessageFor(model => model.WarehouseProfileId)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                @Html.TextAreaFor(model => model.Note, new {@class = "form-control", rows = 5})
+                                @Html.ValidationMessageFor(model => model.Note)
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Chi tiết giao dịch
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <label>Loại sp</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Sản phẩm</label>
+                        </div>
+                        <div class="col-lg-1">
+                            <label>S.Lượng</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Đơn giá</label>
+                        </div>
+                        <div class="col-lg-1">
+                            <label>K.Hao</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Giá/ngày</label>
+                        </div>
+                        <div class="col-lg-1">
+                            <label></label>
+                        </div>
+                    </div>
+                    <div data-bind='foreach: details'>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <select data-bind='options: availableCategories , optionsText: "Name", optionsCaption: "Chọn...", optionValue: "Id", value: category' class="form-control"> </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group" data-bind="with: category">
+                                    <select data-bind='options: Products , optionsText: "Name",optionValue: "Id", optionsCaption: "Chọn...", value: $parent.product' class="form-control"> </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-1">
+                                <div class="form-group">
+                                    <input data-bind='visible: product, value: quantity' class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <input data-bind='visible: product, value: unitprice' class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-1">
+                                <div class="form-group">
+                                    <input data-bind='visible: product, value: numyeardepreciation' class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <input data-bind='visible: product, value: priceperday' class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-1">
+                                <div class="form-group">
+                                    <a class="btn btn-default" href='#' data-bind='click: $parent.removeDetail'>Xóa</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <a data-bind='click: addDetail' class="btn btn-default">Thêm sản phẩm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+}
+<script type="text/javascript">
+    var categories =@Html.Raw(Json.Encode(Model.Categories));
+    var TransactionDetails = function () {
+        var self = this;
+        self.availableCategories = ko.observableArray(categories);
+        self.category = ko.observable();
+        self.product = ko.observable();
+        self.quantity = ko.observable(1);
+        self.unitprice = ko.observable(0);
+        self.unitprice = ko.observable(0);
+        self.numyeardepreciation = ko.observable(0);
+        self.priceperday = ko.observable(0);
+
+        self.category.subscribe(function () {
+            self.product(undefined);
+        });
+    };
+    var Transaction = function () {
+
+        var self = this;
+        self.details = ko.observableArray([new TransactionDetails()]);
+
+
+        // Operations
+        self.addDetail = function () { self.details.push(new TransactionDetails()) };
+        self.removeDetail = function (detail) { self.details.remove(detail) };
+        self.save = function () {
+            var dataToSave = $.map(self.details(), function (detail) {
+                return detail.product() ? {
+                    productName: detail.product().name,
+                    quantity: detail.quantity()
+                } : undefined
+            });
+            alert("Could now send this to server: " + JSON.stringify(dataToSave));
+        };
+    };
+    ko.applyBindings(new Transaction());
+</script>

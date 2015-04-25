@@ -32,41 +32,16 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin">
-      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security">
-      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth">
-      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,14 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts\AccountRegistrationService.cs" />
+    <Compile Include="Accounts\AccountRegistrationRequest.cs" />
+    <Compile Include="Accounts\AccountRegistrationResult.cs" />
+    <Compile Include="Accounts\IAccountRegistrationService.cs" />
+    <Compile Include="Authentication\FormsAuthenticationService.cs" />
+    <Compile Include="Authentication\IAuthenticationService.cs" />
+    <Compile Include="Catalog\ProductService.cs" />
+    <Compile Include="Catalog\CategoryService.cs" />
+    <Compile Include="Catalog\IProductService.cs" />
+    <Compile Include="Catalog\ICategoryService.cs" />
     <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="Configuration\SettingExtensions.cs" />
     <Compile Include="Configuration\SettingService.cs" />
-    <Compile Include="Identity\AccountService.cs" />
-    <Compile Include="Identity\ApplicationSignInManager.cs" />
-    <Compile Include="Identity\ApplicationUserManager.cs" />
-    <Compile Include="Identity\IAccountService.cs" />
+    <Compile Include="Accounts\ChangePasswordRequest.cs" />
+    <Compile Include="Accounts\AccountExtensions.cs" />
+    <Compile Include="Accounts\AccountService.cs" />
+    <Compile Include="Accounts\IAccountService.cs" />
+    <Compile Include="Accounts\PasswordChangeResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\EncryptionService.cs" />
+    <Compile Include="Security\IEncryptionService.cs" />
+    <Compile Include="Warehouses\IWarehouseProfileService.cs" />
+    <Compile Include="Warehouses\WarehouseProfileService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EquipmentManagementSystem.Core\EquipmentManagementSystem.Core.csproj">

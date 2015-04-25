@@ -1,0 +1,35 @@
+﻿@model CategoryModel
+
+@{
+    ViewBag.Title = "Thêm mới loại sản phẩm";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Thổng tin loại sản phẩm  (@Html.ActionLink("về danh sách", "List"))
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @Html.Partial("_CreateOrUpdate", Model)
+                            <input type="submit" name="save" class="btn btn-primary" value="Lưu mới" />
+                            <input type="submit" name="save-continue" class="btn btn-primary" value="Lưu và tiếp tục" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+   
+    
+}

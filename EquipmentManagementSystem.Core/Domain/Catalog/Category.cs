@@ -14,8 +14,6 @@ namespace EquipmentManagementSystem.Core.Domain.Catalog
 
         public string Description { get; set; }
 
-        public int ParentCategoryId { get; set; }
-
         public bool Deleted { get; set; }
 
         public virtual ICollection<Product> Products

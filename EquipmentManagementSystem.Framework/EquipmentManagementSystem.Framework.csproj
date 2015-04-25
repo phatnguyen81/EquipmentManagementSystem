@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
@@ -37,19 +40,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Autofac.Mvc5.3.3.3\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -58,10 +67,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.0\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.0\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.dll</HintPath>
@@ -79,10 +92,44 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FormValueRequiredAttribute.cs" />
+    <Compile Include="Controllers\ParameterBasedOnFormNameAndValueAttribute.cs" />
+    <Compile Include="Controllers\ParameterBasedOnFormNameAttribute.cs" />
+    <Compile Include="Datatables\DataSourceRequest.cs" />
+    <Compile Include="Datatables\DataSourceResult.cs" />
     <Compile Include="DependencyRegistrar.cs" />
+    <Compile Include="HtmlExtensions.cs" />
+    <Compile Include="Mvc\BaseEmsModel.cs" />
+    <Compile Include="Mvc\CommaSeparatedModelBinder.cs" />
+    <Compile Include="Mvc\DeleteConfirmationModel.cs" />
+    <Compile Include="Mvc\DependencyRegistrarExtensions.cs" />
+    <Compile Include="Mvc\IModelAttribute.cs" />
+    <Compile Include="Mvc\EmsMetadataProvider.cs" />
+    <Compile Include="Mvc\EmsModelBinder.cs" />
+    <Compile Include="Mvc\NullJsonResult.cs" />
+    <Compile Include="Mvc\Routes\GuidConstraint.cs" />
+    <Compile Include="Mvc\Routes\IRouteProvider.cs" />
+    <Compile Include="Mvc\Routes\IRoutePublisher.cs" />
+    <Compile Include="Mvc\Routes\RoutePublisher.cs" />
+    <Compile Include="Mvc\XmlDownloadResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AsIsBundleOrderer.cs" />
+    <Compile Include="UI\DataListExtensions.cs" />
+    <Compile Include="UI\IPageHeadBuilder.cs" />
+    <Compile Include="UI\LayoutExtensions.cs" />
+    <Compile Include="UI\NotifyType.cs" />
+    <Compile Include="UI\PageHeadBuilder.cs" />
+    <Compile Include="UI\Paging\BasePageableModel.cs" />
+    <Compile Include="UI\Paging\IPageableModel.cs" />
+    <Compile Include="UI\Paging\Pager.cs" />
+    <Compile Include="UI\ResourceLocation.cs" />
+    <Compile Include="WebWorkContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

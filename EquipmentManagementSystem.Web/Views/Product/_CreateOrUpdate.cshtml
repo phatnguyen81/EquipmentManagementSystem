@@ -1,0 +1,28 @@
+﻿
+@model ProductModel
+
+@Html.ValidationSummary(true)
+@Html.HiddenFor(model => model.Id)
+
+<div class="form-group">
+    <label class="required">Sku</label>
+    @Html.TextBoxFor(model => model.Sku, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Sku)
+</div>
+
+<div class="form-group">
+    <label class="required">Tên</label>
+    @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+<div class="form-group">
+    <label class="required">Loại sản phẩm</label>
+    @Html.DropDownListFor(model => model.CategoryId, Model.AvailableCategories, "--- Chọn ---", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.CategoryId)
+</div>
+<div class="form-group">
+    <label>Mô tả</label>
+    @Html.EditorFor(model => model.Description, "RichEditor")
+    @Html.ValidationMessageFor(model => model.Description)
+</div>
+

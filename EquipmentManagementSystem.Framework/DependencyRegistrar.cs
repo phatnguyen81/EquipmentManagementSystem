@@ -12,7 +12,17 @@ using EquipmentManagementSystem.Data;
 using EquipmentManagementSystem.Core.Caching;
 using Autofac.Integration.Mvc;
 using System.Linq;
+using System.Web;
+using Ems.Web.Framework.Mvc.Routes;
+using EquipmentManagementSystem.Core;
 using EquipmentManagementSystem.Core.Infrastructure.DependencyManagement;
+using EquipmentManagementSystem.Framework.Mvc.Routes;
+using EquipmentManagementSystem.Framework.UI;
+using EquipmentManagementSystem.Services.Accounts;
+using EquipmentManagementSystem.Services.Authentication;
+using EquipmentManagementSystem.Services.Catalog;
+using EquipmentManagementSystem.Services.Security;
+using EquipmentManagementSystem.Services.Warehouses;
 
 namespace EquipmentManagementSystem.Framework
 {
@@ -21,6 +31,24 @@ namespace EquipmentManagementSystem.Framework
        
         public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
+            //HTTP context and other related stuff
+            builder.Register(c =>
+                //register FakeHttpContext when HttpContext is not available
+                (new HttpContextWrapper(HttpContext.Current) as HttpContextBase))
+                .As<HttpContextBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Request)
+                .As<HttpRequestBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Response)
+                .As<HttpResponseBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Server)
+                .As<HttpServerUtilityBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Session)
+                .As<HttpSessionStateBase>()
+                .InstancePerLifetimeScope();
 
 
             //controllers
@@ -57,6 +85,28 @@ namespace EquipmentManagementSystem.Framework
             //cache manager
             builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("ems_cache_static").SingleInstance();
             builder.RegisterType<PerRequestCacheManager>().As<ICacheManager>().Named<ICacheManager>("ems_cache_per_request").InstancePerLifetimeScope();
+
+            //work context
+            builder.RegisterType<WebWorkContext>().As<IWorkContext>().InstancePerLifetimeScope();
+
+            //pass MemoryCacheManager as cacheManager (cache settings between requests)
+            builder.RegisterType<SettingService>().As<ISettingService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ems_cache_static"))
+                .InstancePerLifetimeScope();
+            builder.RegisterSource(new SettingsSource());
+
+            builder.RegisterType<PageHeadBuilder>().As<IPageHeadBuilder>().InstancePerLifetimeScope();
+
+            builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
+            builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
+
+            builder.RegisterType<AccountService>().As<IAccountService>().InstancePerLifetimeScope();
+            builder.RegisterType<AccountRegistrationService>().As<IAccountRegistrationService>().InstancePerLifetimeScope();
+            builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerLifetimeScope();
+            builder.RegisterType<ProductService>().As<IProductService>().InstancePerLifetimeScope();
+            builder.RegisterType<WarehouseProfileService>().As<IWarehouseProfileService>().InstancePerLifetimeScope();
+
+            builder.RegisterType<RoutePublisher>().As<IRoutePublisher>().SingleInstance();
 
         }
         public int Order

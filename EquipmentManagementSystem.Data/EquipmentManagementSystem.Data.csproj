@@ -30,17 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -57,13 +53,21 @@
     <Compile Include="EfDataProviderManager.cs" />
     <Compile Include="EfRepository.cs" />
     <Compile Include="EfStartUpTask.cs" />
-    <Compile Include="EmsIdentityDbContext.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
+    <Compile Include="Mapping\Account\AccountMap.cs" />
+    <Compile Include="Mapping\Account\AccountRoleMap.cs" />
     <Compile Include="Mapping\Catalog\CategoryMap.cs" />
+    <Compile Include="Mapping\Catalog\ProductDepreciationMap.cs" />
     <Compile Include="Mapping\Catalog\ProductMap.cs" />
     <Compile Include="Mapping\Configuration\SettingMap.cs" />
     <Compile Include="EmsObjectContext.cs" />
+    <Compile Include="Mapping\Transactions\TransactionDetailMap.cs" />
+    <Compile Include="Mapping\Transactions\TransactionTypeMap.cs" />
+    <Compile Include="Mapping\Transactions\TransactionMap.cs" />
+    <Compile Include="Mapping\Warehouses\WarehouseMap.cs" />
+    <Compile Include="Mapping\Warehouses\WarehouseProfileMap.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerDataProvider.cs" />
   </ItemGroup>

@@ -1,0 +1,23 @@
+﻿@model EquipmentManagementSystem.Framework.Mvc.DeleteConfirmationModel
+@using (Html.BeginForm(Model.ActionName, Model.ControllerName, new { id = Model.Id }))
+{
+
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Xác nhận</h4>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn xóa?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Bỏ qua</button>
+                    <input type="submit" class="btn btn-primary" value="Xóa" />
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+}

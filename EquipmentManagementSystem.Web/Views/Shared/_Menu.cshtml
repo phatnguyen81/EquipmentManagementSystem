@@ -3,40 +3,35 @@
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li>
-                <a href="#"><i class="fa fa-list fa-fw"></i> Users<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-list fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#Account/List"><i class="fa fa-list fa-fw"></i> List</a>
-                    </li>
-                   
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-list fa-fw"></i> Product<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="@Url.Action("Index", "Product")"><i class="fa fa-list fa-fw"></i> List</a>
+                        <a href="@Url.Action("Index", "Product")"><i class="fa fa-list fa-fw"></i> Danh sách</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Create","Product")"><i class="fa fa-plus fa-fw"></i> Add New Product</a>
+                        <a href="@Url.Action("Create","Product")"><i class="fa fa-plus fa-fw"></i> Thêm mới</a>
                     </li>
                 </ul>
             </li>
 
             <li>
-                <a href="#"><i class="fa fa-list fa-fw"></i> Product Group<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-list fa-fw"></i> Loại sản phẩm<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="@Url.Action("Index", "ProductGroup")"><i class="fa fa-list fa-fw"></i> List</a>
+                        <a href="@Url.Action("Index", "Category")"><i class="fa fa-list fa-fw"></i> Danh sách</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Create", "ProductGroup")"><i class="fa fa-plus fa-fw"></i> Add New Product Group</a>
+                        <a href="@Url.Action("Create", "Category")"><i class="fa fa-plus fa-fw"></i> Thêm mới</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="@Url.Action("MoveProduct", "WareHouse")"><i class="fa fa-university fa-fw"></i> Move Product</a>
-                
+                <a href="#"><i class="fa fa-university fa-fw"></i> Giao dịch<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="@Url.Action("Import", "Transaction")"><i class="fa fa-list fa-fw"></i> Nhập hàng</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

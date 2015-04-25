@@ -37,16 +37,10 @@
       <HintPath>..\packages\Autofac.Mvc5.3.3.3\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -104,10 +98,20 @@
     <Compile Include="Data\DataSettingsManager.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Domain\Accounts\Account.cs" />
+    <Compile Include="Domain\Accounts\AccountRole.cs" />
+    <Compile Include="Domain\Accounts\AccountSettings.cs" />
+    <Compile Include="Domain\Accounts\AccountLoginResults.cs" />
     <Compile Include="Domain\Catalog\Category.cs" />
     <Compile Include="Domain\Catalog\Product.cs" />
+    <Compile Include="Domain\Catalog\ProductDepreciation.cs" />
+    <Compile Include="Domain\Common\CommonSettings.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
-    <Compile Include="Domain\Identity\ApplicationUser.cs" />
+    <Compile Include="Domain\Transactions\Transaction.cs" />
+    <Compile Include="Domain\Transactions\TransactionDetail.cs" />
+    <Compile Include="Domain\Transactions\TransactionType.cs" />
+    <Compile Include="Domain\Warehouses\WarehouseProfile.cs" />
+    <Compile Include="Domain\Warehouses\Warehouse.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\DependencyManagement\ContainerManager.cs" />
     <Compile Include="Infrastructure\DependencyManagement\IDependencyRegistrar.cs" />
@@ -119,6 +123,7 @@
     <Compile Include="Infrastructure\Singleton.cs" />
     <Compile Include="Infrastructure\WebAppTypeFinder.cs" />
     <Compile Include="IPagedList.cs" />
+    <Compile Include="IWorkContext.cs" />
     <Compile Include="PagedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -126,9 +131,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Templates\Account\list.html" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
