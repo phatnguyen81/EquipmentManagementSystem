@@ -13,6 +13,8 @@ namespace EquipmentManagementSystem.Web.Models.Transactions
 
         public decimal UnitPrice { get; set; }
 
-        public DateTime ExpireDate { get; set; }
+        public string ExpireDate { get; set; }
+
+        public decimal PricePerDay { get; set; }
     }
 }

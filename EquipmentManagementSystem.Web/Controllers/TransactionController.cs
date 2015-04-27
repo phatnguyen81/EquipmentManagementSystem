@@ -59,6 +59,20 @@ namespace EquipmentManagementSystem.Web.Controllers
             PrepareImportModel(model);
             return View(model);
         }
+
+        
+        #endregion
+
+        #region Ajax
+        [HttpPost]
+        public JsonResult  _AjaxAddImport(ImportModel model)
+        {
+            return Json(new
+            {
+                ErrCode = 0
+            });
+        }
+
         #endregion
     }
 }

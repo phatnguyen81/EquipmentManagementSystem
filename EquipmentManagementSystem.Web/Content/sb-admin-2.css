@@ -377,3 +377,16 @@ ul.validation-summary-errors {
 .field-validation-error {
     color: red;
 }
+.form-details label {
+    font-size: 12px;
+}
+.form-details .form-group {
+    margin-bottom: 5px;
+}
+.form-details .row {
+      margin-right: -5px;
+        margin-left: -5px;
+}
+.form-details .col-lg-2,.form-details .col-lg-1,.form-details .col-lg-3 {
+    padding: 0 1px;
+}

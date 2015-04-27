@@ -1,6 +1,12 @@
 ﻿@model ImportModel
 @{
     Html.AddScriptParts("~/Scripts/knockout-3.3.0.js");
+    Html.AddScriptParts("~/Scripts/knockoutjs-plugins.js");
+    Html.AddScriptParts("~/Scripts/bootstrap-datepicker.min.js");
+    Html.AddScriptParts("~/Scripts/locales/bootstrap-datepicker.vi.min.js");
+    Html.AddScriptParts("~/Scripts/autoNumeric/autoNumeric-1.9.25.min.js");
+
+    Html.AddCssFileParts("~/Content/bootstrap-datepicker.min.css");
     ViewBag.Title = "Nhập hàng";
 }
 
@@ -10,7 +16,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-@using (Html.BeginForm(null, null, FormMethod.Post))
+@using (Html.BeginForm(null, null, FormMethod.Post,new {id = "importForm"}))
 {
     <div class="row">
         <div class="col-lg-12">
@@ -57,7 +63,7 @@
                 <div class="panel-heading">
                     Chi tiết giao dịch
                 </div>
-                <div class="panel-body">
+                <div class="panel-body form-details">
                     <div class="row">
                         <div class="col-lg-2">
                             <label>Loại sp</label>
@@ -71,10 +77,10 @@
                         <div class="col-lg-2">
                             <label>Đơn giá</label>
                         </div>
-                        <div class="col-lg-1">
-                            <label>K.Hao</label>
-                        </div>
                         <div class="col-lg-2">
+                            <label>Ngày hết hạn k.hao</label>
+                        </div>
+                        <div class="col-lg-1">
                             <label>Giá/ngày</label>
                         </div>
                         <div class="col-lg-1">
@@ -85,44 +91,54 @@
                         <div class="row">
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <select data-bind='options: availableCategories , optionsText: "Name", optionsCaption: "Chọn...", optionValue: "Id", value: category' class="form-control"> </select>
+                                    <select data-bind='options: $parent.availableCategories , optionsText: "name", optionsCaption: "Chọn...", value: category' class="form-control input-sm"> </select>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group" data-bind="with: category">
-                                    <select data-bind='options: Products , optionsText: "Name",optionValue: "Id", optionsCaption: "Chọn...", value: $parent.product' class="form-control"> </select>
+                                    <select data-bind='options:  products , optionsText: "name",optionsValue: "id", optionsCaption: "Chọn...", value: $parent.product,attr: { name: "TransactionDetails["+$index()+"].ProductId"}' class="form-control input-sm"> </select>
                                 </div>
                             </div>
                             <div class="col-lg-1">
                                 <div class="form-group">
-                                    <input data-bind='visible: product, value: quantity' class="form-control"/>
+                                    <input data-bind='autoNumeric:{},visible: product, value: quantity,attr: { name: "TransactionDetails["+$index()+"].Qtty"}' class="form-control input-sm" data-v-min="0" data-v-max="999999" data-a-sep=" " data-w-empty="empty" />
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <input data-bind='visible: product, value: unitprice' class="form-control" />
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <input data-bind='visible: product, value: numyeardepreciation' class="form-control" />
+                                    <input data-bind='autoNumeric:{},visible: product, value: unitprice,attr: { name: "TransactionDetails["+$index()+"].UnitPrice"}' class="form-control input-sm" name="TransactionDetails[].UnitPrice" data-v-min="0" data-v-max="999999999999" data-a-sep=" " data-w-empty="empty" />
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <input data-bind='visible: product, value: priceperday' class="form-control" />
+                                    <div class="input-group date" data-bind='visible: product'>
+                                        <input data-bind='datepicker: null,value: expiredate,attr: { name: "TransactionDetails["+$index()+"].ExpireDate"}' class="form-control input-sm" /><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-1">
                                 <div class="form-group">
-                                    <a class="btn btn-default" href='#' data-bind='click: $parent.removeDetail'>Xóa</a>
+                                    <input data-bind='visible: product, value: priceperday,attr: { name: "TransactionDetails["+$index()+"].PricePerDay"}' class="form-control input-sm" />
+                                </div>
+                            </div>
+                            <div class="col-lg-1">
+                                <div class="form-group">
+                                    <a class="btn btn-default btn-sm" href='#' data-bind='click: $parent.removeDetail'>Xóa</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-2">
-                            <a data-bind='click: addDetail' class="btn btn-default">Thêm sản phẩm</a>
+                            <a data-bind='click: addDetail' class="btn btn-default btn-sm">Thêm sản phẩm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a data-bind='click: save' class="btn btn-primary">Nhập hàng</a>
                         </div>
                     </div>
                 </div>
@@ -132,40 +148,57 @@
     </div>
 }
 <script type="text/javascript">
-    var categories =@Html.Raw(Json.Encode(Model.Categories));
-    var TransactionDetails = function () {
+    var categories =@Html.Raw(Json.Encode(Model.Categories.Select(q=>new {id=q.Id,name=q.Name,products = q.Products.Select(a => new{id =a.Id,name = a.Name })})));
+    var TransactionDetails = function() {
         var self = this;
-        self.availableCategories = ko.observableArray(categories);
+
         self.category = ko.observable();
         self.product = ko.observable();
         self.quantity = ko.observable(1);
         self.unitprice = ko.observable(0);
-        self.unitprice = ko.observable(0);
-        self.numyeardepreciation = ko.observable(0);
-        self.priceperday = ko.observable(0);
+        self.expiredate = ko.observable();
+        self.priceperday = ko.computed(function() {
+            if (self.expiredate() && self.expiredate() != "" && self.unitprice() && self.quantity()) {
+                var days = daydiff(parseDate('@Model.ImportDate'),parseDate(self.expiredate()));
+                return Math.round((self.unitprice() * self.quantity()) / days);
+            }
+            return 0;
+        });
 
-        self.category.subscribe(function () {
+        self.category.subscribe(function() {
             self.product(undefined);
         });
     };
-    var Transaction = function () {
+    var Transaction = function(data) {
 
         var self = this;
         self.details = ko.observableArray([new TransactionDetails()]);
-
+        self.availableCategories = categories;
 
         // Operations
-        self.addDetail = function () { self.details.push(new TransactionDetails()) };
-        self.removeDetail = function (detail) { self.details.remove(detail) };
-        self.save = function () {
-            var dataToSave = $.map(self.details(), function (detail) {
-                return detail.product() ? {
-                    productName: detail.product().name,
-                    quantity: detail.quantity()
-                } : undefined
-            });
-            alert("Could now send this to server: " + JSON.stringify(dataToSave));
+        self.addDetail = function() { self.details.push(new TransactionDetails()) };
+        self.removeDetail = function(detail) { self.details.remove(detail) };
+        self.save = function() {
+            if (self.checkInput()) {
+                $.ajax({
+                    url: '@Url.Action("_AjaxAddImport")',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: $('#importForm').serialize(),
+                    success: function(data) {
+                        alert(data.ErrCode);
+                    }
+                });
+            }
+        };
+        self.checkInput = function() {
+            if (!self.details() || self.details().length <= 0) {
+                alert('Chưa nhập chi tiết giao dịch');
+                return false;
+            }
+            return true;
         };
     };
     ko.applyBindings(new Transaction());
+
 </script>
