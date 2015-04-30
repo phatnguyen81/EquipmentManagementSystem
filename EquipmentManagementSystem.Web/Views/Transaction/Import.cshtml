@@ -101,25 +101,28 @@
                             </div>
                             <div class="col-lg-1">
                                 <div class="form-group">
-                                    <input data-bind='autoNumeric:{},visible: product, value: quantity,attr: { name: "TransactionDetails["+$index()+"].Qtty"}' class="form-control input-sm" data-v-min="0" data-v-max="999999" data-a-sep=" " data-w-empty="empty" />
+                                    <input data-bind='value: quantity,attr: { name: "TransactionDetails["+$index()+"].Qtty"}' type="hidden" />
+                                    <input data-bind='autoNumeric:quantity,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999},visible: product' class="form-control input-sm" />
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <input data-bind='autoNumeric:{},visible: product, value: unitprice,attr: { name: "TransactionDetails["+$index()+"].UnitPrice"}' class="form-control input-sm" name="TransactionDetails[].UnitPrice" data-v-min="0" data-v-max="999999999999" data-a-sep=" " data-w-empty="empty" />
+                                    <input data-bind='value: unitprice,attr: { name: "TransactionDetails["+$index()+"].UnitPrice"}' type="hidden" />
+                                    <input data-bind='autoNumeric:unitprice,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999},visible: product' class="form-control input-sm" name="TransactionDetails[].UnitPrice" />
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
                                     <div class="input-group date" data-bind='visible: product'>
-                                        <input data-bind='datepicker: null,value: expiredate,attr: { name: "TransactionDetails["+$index()+"].ExpireDate"}' class="form-control input-sm" /><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                        <input data-bind='datepicker: {language: "vi"},value: expiredate,attr: { name: "TransactionDetails["+$index()+"].ExpireDate"}' class="form-control input-sm" /><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                     </div>
                                     
                                 </div>
                             </div>
                             <div class="col-lg-1">
                                 <div class="form-group">
-                                    <input data-bind='visible: product, value: priceperday,attr: { name: "TransactionDetails["+$index()+"].PricePerDay"}' class="form-control input-sm" />
+                                    <input data-bind='value: priceperday,attr: { name: "TransactionDetails["+$index()+"].PricePerDay"}' type="hidden" />
+                                    <input data-bind='autoNumeric:priceperdaytemp,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999},visible: product' class="form-control input-sm" />
                                 </div>
                             </div>
                             <div class="col-lg-1">
@@ -147,58 +150,80 @@
         <!-- /.col-lg-12 -->
     </div>
 }
-<script type="text/javascript">
-    var categories =@Html.Raw(Json.Encode(Model.Categories.Select(q=>new {id=q.Id,name=q.Name,products = q.Products.Select(a => new{id =a.Id,name = a.Name })})));
-    var TransactionDetails = function() {
-        var self = this;
+@section scripts
+{
+    <script type="text/javascript">
+        var categories = @Html.Raw(Json.Encode(Model.Categories.Select(q => new {id = q.Id, name = q.Name, products = q.Products.Select(a => new {id = a.Id, name = a.Name})})));
+        var TransactionDetails = function() {
+            var self = this;
 
-        self.category = ko.observable();
-        self.product = ko.observable();
-        self.quantity = ko.observable(1);
-        self.unitprice = ko.observable(0);
-        self.expiredate = ko.observable();
-        self.priceperday = ko.computed(function() {
-            if (self.expiredate() && self.expiredate() != "" && self.unitprice() && self.quantity()) {
-                var days = daydiff(parseDate('@Model.ImportDate'),parseDate(self.expiredate()));
-                return Math.round((self.unitprice() * self.quantity()) / days);
-            }
-            return 0;
-        });
-
-        self.category.subscribe(function() {
-            self.product(undefined);
-        });
-    };
-    var Transaction = function(data) {
-
-        var self = this;
-        self.details = ko.observableArray([new TransactionDetails()]);
-        self.availableCategories = categories;
-
-        // Operations
-        self.addDetail = function() { self.details.push(new TransactionDetails()) };
-        self.removeDetail = function(detail) { self.details.remove(detail) };
-        self.save = function() {
-            if (self.checkInput()) {
-                $.ajax({
-                    url: '@Url.Action("_AjaxAddImport")',
-                    dataType: 'json',
-                    type: 'POST',
-                    data: $('#importForm').serialize(),
-                    success: function(data) {
-                        alert(data.ErrCode);
+            self.category = ko.observable();
+            self.product = ko.observable();
+            self.quantity = ko.observable(1);
+            self.unitprice = ko.observable(0);
+            self.expiredate = ko.observable();
+            self.priceperday = ko.observable(0);
+            self.lastpriceperday = ko.observable(0);
+            self.priceperdaytemp = ko.pureComputed({
+                read: function () {
+                    if (self.expiredate() && self.unitprice() && self.quantity()) {
+                        var days = daydiff(parseDate('@Model.ImportDate'), parseDate(self.expiredate()));
+                        console.log('days: ' + days);
+                        console.log('unitprice: ' + self.unitprice() + ' | quantity: ' + self.quantity());
+                        var newvalue = Math.round((parseFloat(self.unitprice()) * parseFloat(self.quantity())) / days);
+                        if (newvalue != self.lastpriceperday()) {
+                            self    
+                        }
+                        
+                    } else {
+                        self.priceperday(0);
                     }
-                });
-            }
-        };
-        self.checkInput = function() {
-            if (!self.details() || self.details().length <= 0) {
-                alert('Chưa nhập chi tiết giao dịch');
-                return false;
-            }
-            return true;
-        };
-    };
-    ko.applyBindings(new Transaction());
+                    alert('read: ' + self.priceperday());
+                    return self.priceperday();
 
-</script>
+                },
+                write: function (value) {
+                    self.priceperday(value);
+                    alert('write: ' + self.priceperday());
+                },
+                owner: this
+            });
+     
+            self.category.subscribe(function() {
+                self.product(undefined);
+            });
+        };
+        var Transaction = function(data) {
+
+            var self = this;
+            self.details = ko.observableArray([new TransactionDetails()]);
+            self.availableCategories = categories;
+
+            // Operations
+            self.addDetail = function() { self.details.push(new TransactionDetails()) };
+            self.removeDetail = function(detail) { self.details.remove(detail) };
+            self.save = function() {
+                if (self.checkInput()) {
+                    $.ajax({
+                        url: '@Url.Action("_AjaxAddImport")',
+                        dataType: 'json',
+                        type: 'POST',
+                        data: $('#importForm').serialize(),
+                        success: function(data) {
+                            alert(data.ErrCode);
+                        }
+                    });
+                }
+            };
+            self.checkInput = function() {
+                if (!self.details() || self.details().length <= 0) {
+                    alert('Chưa nhập chi tiết giao dịch');
+                    return false;
+                }
+                return true;
+            };
+        };
+        ko.applyBindings(new Transaction());
+
+    </script>
+}

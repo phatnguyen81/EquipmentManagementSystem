@@ -10,6 +10,7 @@ namespace EquipmentManagementSystem.Web.Models.Transactions
         public int ProductId { get; set; }
 
         public decimal Qtty { get; set; }
+        public decimal QttyMask { get; set; }
 
         public decimal UnitPrice { get; set; }
 
