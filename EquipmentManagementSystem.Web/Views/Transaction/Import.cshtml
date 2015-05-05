@@ -29,15 +29,15 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Ngày nhập kho</label>
-                                @Html.TextBoxFor(model => model.ImportDate, new { @class = "form-control", @readonly = "readonly"})
-                                @Html.ValidationMessageFor(model => model.ImportDate)
+                                @Html.TextBoxFor(model => model.TxDateFrom, new { @class = "form-control", @readonly = "readonly"})
+                                @Html.ValidationMessageFor(model => model.TxDateFrom)
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Kho nhận</label>
-                                @Html.DropDownListFor(model => model.WarehouseProfileId, Model.AvailableWarehouseProfiles, "--- Chọn ---", new {@class = "form-control"})
-                                @Html.ValidationMessageFor(model => model.WarehouseProfileId)
+                                <label class="required">Kho nhận</label>
+                                @Html.DropDownListFor(model => model.FromWarehouseProfileId, Model.AvailableWarehouseProfiles, "--- Chọn ---", new {@class = "form-control"})
+                                @Html.ValidationMessageFor(model => model.FromWarehouseProfileId)
                             </div>
                         </div>
                     </div>
@@ -102,13 +102,13 @@
                             <div class="col-lg-1">
                                 <div class="form-group">
                                     <input data-bind='value: quantity,attr: { name: "TransactionDetails["+$index()+"].Qtty"}' type="hidden" />
-                                    <input data-bind='autoNumeric:quantity,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999},visible: product' class="form-control input-sm" />
+                                    <input data-bind='autoNumeric:quantity,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999, wEmpty:"zero"},visible: product' class="form-control input-sm" />
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
                                     <input data-bind='value: unitprice,attr: { name: "TransactionDetails["+$index()+"].UnitPrice"}' type="hidden" />
-                                    <input data-bind='autoNumeric:unitprice,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999},visible: product' class="form-control input-sm" name="TransactionDetails[].UnitPrice" />
+                                    <input data-bind='autoNumeric:unitprice,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999999999, wEmpty:"zero"},visible: product' class="form-control input-sm" name="TransactionDetails[].UnitPrice" />
                                 </div>
                             </div>
                             <div class="col-lg-2">
@@ -122,7 +122,7 @@
                             <div class="col-lg-1">
                                 <div class="form-group">
                                     <input data-bind='value: priceperday,attr: { name: "TransactionDetails["+$index()+"].PricePerDay"}' type="hidden" />
-                                    <input data-bind='autoNumeric:priceperdaytemp,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999},visible: product' class="form-control input-sm" />
+                                    <input data-bind='autoNumeric:priceperdaytemp,autoNumericSettings:{mDec: 0,vMin: 0, vMax:999999999, wEmpty:"zero"},visible: product' class="form-control input-sm" />
                                 </div>
                             </div>
                             <div class="col-lg-1">
@@ -167,24 +167,24 @@
             self.priceperdaytemp = ko.pureComputed({
                 read: function () {
                     if (self.expiredate() && self.unitprice() && self.quantity()) {
-                        var days = daydiff(parseDate('@Model.ImportDate'), parseDate(self.expiredate()));
+                        var days = daydiff(parseDate('@Model.TxDateFrom'), parseDate(self.expiredate()));
                         console.log('days: ' + days);
                         console.log('unitprice: ' + self.unitprice() + ' | quantity: ' + self.quantity());
                         var newvalue = Math.round((parseFloat(self.unitprice()) * parseFloat(self.quantity())) / days);
                         if (newvalue != self.lastpriceperday()) {
-                            self    
+                            self.lastpriceperday(newvalue);
+                            self.priceperday(newvalue);
                         }
-                        
+
                     } else {
+                        self.lastpriceperday(0);
                         self.priceperday(0);
                     }
-                    alert('read: ' + self.priceperday());
                     return self.priceperday();
 
                 },
                 write: function (value) {
                     self.priceperday(value);
-                    alert('write: ' + self.priceperday());
                 },
                 owner: this
             });
@@ -214,8 +214,13 @@
                         }
                     });
                 }
+                return false;
             };
             self.checkInput = function() {
+                if (!$('#FromWarehouseProfileId').val()) {
+                    alert('Chưa chọn kho nhập');
+                    return false;
+                }
                 if (!self.details() || self.details().length <= 0) {
                     alert('Chưa nhập chi tiết giao dịch');
                     return false;

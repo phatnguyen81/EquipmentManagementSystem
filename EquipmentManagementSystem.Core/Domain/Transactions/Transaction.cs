@@ -14,6 +14,10 @@ namespace EquipmentManagementSystem.Core.Domain.Transactions
 
         public string TransactionTypeCode { get; set; }
 
+        public int FromWarehouseProfileId { get; set; }
+
+        public int ToWarehouseProfileId { get; set; }
+
         public DateTime TxDateFrom { get; set; }
 
         public DateTime? TxDateTo { get; set; }

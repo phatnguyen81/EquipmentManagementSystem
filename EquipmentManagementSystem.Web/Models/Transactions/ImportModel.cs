@@ -14,15 +14,23 @@ namespace EquipmentManagementSystem.Web.Models.Transactions
         {
             AvailableWarehouseProfiles = new List<SelectListItem>();
             TransactionDetails = new List<TransactionDetailModel>();
-            ImportDate = DateTime.Now.ToString("dd/MM/yyyy");
+            TxDateFrom = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
-        public string ImportDate { get; set; }
+        public string TransactionTypeCode { get; set; }
+
+        public string TxDateFrom { get; set; }
+
+        public string TxDateTo { get; set; }
+
+        public int AccountId { get; set; }
 
         [UIHint("RichEditor")]
         public string Note { get; set; }
 
-        public int WarehouseProfileId { get; set; }
+        public int FromWarehouseProfileId { get; set; }
+
+        public int ToWarehouseProfileId { get; set; }
 
         public List<TransactionDetailModel> TransactionDetails { get; set; }
 

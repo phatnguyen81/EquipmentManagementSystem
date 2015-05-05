@@ -15,6 +15,7 @@ namespace EquipmentManagementSystem.Data.Mapping.Transactions
             this.ToTable("Transaction");
             this.HasKey(s => s.Id);
             this.Property(s => s.Code).IsRequired().HasMaxLength(20);
+            this.Property(s => s.TransactionTypeCode).IsRequired().HasMaxLength(20);
             this.Property(s => s.Note).HasMaxLength(2000);
 
             this.HasMany(t => t.TransactionDetails)
